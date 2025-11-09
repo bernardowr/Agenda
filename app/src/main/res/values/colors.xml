@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Cores base -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Paleta Material Design - Azul Moderno -->
+    <color name="primary_blue">#2196F3</color>
+    <color name="primary_dark_blue">#1976D2</color>
+    <color name="primary_light_blue">#64B5F6</color>
+    <color name="accent_blue">#03A9F4</color>
+    
+    <!-- Cores de fundo -->
+    <color name="background_light">#F5F5F5</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1E1E</color>
+    
+    <!-- Cores de texto -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#B0B0B0</color>
+    
+    <!-- Cores de card -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_background_dark">#2C2C2C</color>
+    <color name="card_elevation">#E0E0E0</color>
+    
+    <!-- Cores de destaque -->
+    <color name="divider">#BDBDBD</color>
+    <color name="icon_color">#757575</color>
+    <color name="success_green">#4CAF50</color>
+    <color name="error_red">#F44336</color>
 </resources>

@@ -2,10 +2,9 @@ package com.example.agenda;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,11 +15,17 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.agenda.controller.ContatoController;
 import com.example.agenda.model.Contato;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class AdicionarContatoActivity extends AppCompatActivity {
-    private EditText editNome, editEmail, editTelefone;
-    private Button btnSalvar;
-    private ImageView imageViewFoto;
+    private TextInputEditText editNome, editEmail, editTelefone;
+    private TextInputLayout layoutNome, layoutEmail, layoutTelefone;
+    private MaterialButton btnSalvar;
+    private TextView textAvatarLarge;
+    private MaterialToolbar toolbar;
 
     ContatoController contatoController;
     private Contato contatoEditando; // Contato sendo editado (null se for novo)
@@ -39,16 +44,56 @@ public class AdicionarContatoActivity extends AppCompatActivity {
         contatoController = new ContatoController(this);
         inicializarViews();
         carregarDadosContato();
+        configurarToolbar();
+        configurarAvatar();
     }
 
-    public void inicializarViews(){
+    private void inicializarViews(){
+        toolbar = findViewById(R.id.toolbar3);
+        layoutNome = findViewById(R.id.layoutNome);
+        layoutEmail = findViewById(R.id.layoutEmail);
+        layoutTelefone = findViewById(R.id.layoutTelefone);
+        
         editNome = findViewById(R.id.editTextNome);
         editEmail = findViewById(R.id.editTextEmail);
         editTelefone = findViewById(R.id.editTextTelefone);
         btnSalvar = findViewById(R.id.btnSalvar);
-        imageViewFoto = findViewById(R.id.imageView2);
+        textAvatarLarge = findViewById(R.id.textAvatarLarge);
 
         btnSalvar.setOnClickListener(v -> salvarContato());
+    }
+
+    private void configurarToolbar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        toolbar.setNavigationOnClickListener(v -> finish());
+    }
+
+    private void configurarAvatar() {
+        // Atualizar avatar quando o nome mudar
+        editNome.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                atualizarAvatar(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    private void atualizarAvatar(String nome) {
+        if (nome != null && !nome.trim().isEmpty()) {
+            textAvatarLarge.setText(String.valueOf(nome.trim().charAt(0)).toUpperCase());
+        } else {
+            textAvatarLarge.setText("?");
+        }
     }
 
     private void carregarDadosContato(){
@@ -62,6 +107,19 @@ public class AdicionarContatoActivity extends AppCompatActivity {
                 editNome.setText(contatoEditando.getNome());
                 editEmail.setText(contatoEditando.getEmail() != null ? contatoEditando.getEmail() : "");
                 editTelefone.setText(contatoEditando.getTelefone());
+                
+                // Atualizar título da toolbar
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(R.string.editar_contato);
+                }
+                
+                // Atualizar avatar
+                atualizarAvatar(contatoEditando.getNome());
+            }
+        } else {
+            // Modo novo contato
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(R.string.novo_contato);
             }
         }
     }
@@ -73,9 +131,32 @@ public class AdicionarContatoActivity extends AppCompatActivity {
         String telefone = editTelefone.getText().toString().trim();
 
         //validacao
-        if (nome.isEmpty() || telefone.isEmpty()){
-            Toast.makeText(this, "Nome e telefone são obrigatórios", Toast.LENGTH_SHORT).show();
-            return; // Não prosseguir se a validação falhar
+        boolean valido = true;
+        if (nome.isEmpty()) {
+            if (layoutNome != null) {
+                layoutNome.setError(getString(R.string.nome) + " é obrigatório");
+            }
+            valido = false;
+        } else {
+            if (layoutNome != null) {
+                layoutNome.setError(null);
+            }
+        }
+        
+        if (telefone.isEmpty()) {
+            if (layoutTelefone != null) {
+                layoutTelefone.setError(getString(R.string.telefone) + " é obrigatório");
+            }
+            valido = false;
+        } else {
+            if (layoutTelefone != null) {
+                layoutTelefone.setError(null);
+            }
+        }
+        
+        if (!valido) {
+            Toast.makeText(this, R.string.nome_telefone_obrigatorios, Toast.LENGTH_SHORT).show();
+            return;
         }
         
         // Verificar se está editando um contato existente ou adicionando novo
@@ -89,22 +170,26 @@ public class AdicionarContatoActivity extends AppCompatActivity {
                 contatoEditando.getFoto() != null ? contatoEditando.getFoto() : ""
             );
             if (linhasAfetadas > 0) {
-                Toast.makeText(this, "Contato atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.contato_atualizado, Toast.LENGTH_SHORT).show();
+                finish();
             } else {
-                Toast.makeText(this, "Erro ao atualizar contato", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.erro_atualizar, Toast.LENGTH_SHORT).show();
             }
         } else {
             // Inserir novo contato
             contatoController.adicionarContato(nome, email, telefone, ""); //foto em branco
-            Toast.makeText(this, "Contato adicionado com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.contato_adicionado, Toast.LENGTH_SHORT).show();
+            finish();
         }
-
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        contatoController.close();
+        // Não fechar o controller aqui, pois pode causar problemas de concorrência
+        // O SQLiteOpenHelper gerencia o fechamento automaticamente
+        // if (contatoController != null) {
+        //     contatoController.close();
+        // }
     }
 }

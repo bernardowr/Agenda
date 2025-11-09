@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Agenda</string>
+    <string name="lista_contatos">Lista de Contatos</string>
+    <string name="detalhes_contato">Detalhes do Contato</string>
+    <string name="novo_contato">Novo Contato</string>
+    <string name="editar_contato">Editar Contato</string>
+    <string name="nome">Nome</string>
+    <string name="email">E-mail</string>
+    <string name="telefone">Telefone</string>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="excluir">Excluir</string>
+    <string name="confirmar_exclusao">Confirmação de Exclusão</string>
+    <string name="deseja_excluir_contato">Deseja realmente excluir o contato %1$s?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="contato_adicionado">Contato adicionado com sucesso</string>
+    <string name="contato_atualizado">Contato atualizado com sucesso</string>
+    <string name="contato_excluido">Contato excluído</string>
+    <string name="erro_atualizar">Erro ao atualizar contato</string>
+    <string name="nome_telefone_obrigatorios">Nome e telefone são obrigatórios</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="ordenar_por">Ordenar por</string>
+    <string name="ordenar_nome">Nome</string>
+    <string name="ordenar_telefone">Telefone</string>
+    <string name="tema">Tema</string>
+    <string name="tema_claro">Claro</string>
+    <string name="tema_escuro">Escuro</string>
+    <string name="tema_sistema">Sistema</string>
+    <string name="nenhum_contato">Nenhum contato cadastrado</string>
+    <string name="toque_para_editar">Toque para editar</string>
+    <string name="segure_para_excluir">Segure para excluir</string>
 </resources>
