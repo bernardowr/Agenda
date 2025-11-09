@@ -1,6 +1,6 @@
 # 📱 Agenda - Aplicativo de Gerenciamento de Contatos
 
-Um aplicativo Android para gerenciar seus contatos pessoais, desenvolvido com Material Design 3 e SQLite para armazenamento local.
+Um aplicativo Android para gerenciar seus contatos pessoais, desenvolvido com SQLite para armazenamento local.
 
 ## 🎯 Características
 
@@ -72,5 +72,6 @@ Este projeto foi desenvolvido para fins educacionais.
 
 **Versão**: 1.0  
 **Última Atualização**: 2025
+
 
 
