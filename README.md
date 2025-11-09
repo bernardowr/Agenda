@@ -1,6 +1,6 @@
 # 📱 Agenda - Aplicativo de Gerenciamento de Contatos
 
-Um aplicativo Android moderno e intuitivo para gerenciar seus contatos pessoais, desenvolvido com Material Design 3 e SQLite para armazenamento local.
+Um aplicativo Android para gerenciar seus contatos pessoais, desenvolvido com Material Design 3 e SQLite para armazenamento local.
 
 ## 🎯 Características
 
@@ -13,7 +13,6 @@ Um aplicativo Android moderno e intuitivo para gerenciar seus contatos pessoais,
 - ✅ **Validação de Dados**: Validação de campos obrigatórios
 - ✅ **Busca Rápida**: Interface otimizada para fácil navegação
 
-## 📸 Screenshots
 
 ### Lista de Contatos
 - Visualize todos os seus contatos em cards elegantes
@@ -45,27 +44,6 @@ Um aplicativo Android moderno e intuitivo para gerenciar seus contatos pessoais,
 - JDK 11 ou superior
 - Android SDK com API 24 ou superior
 - Dispositivo Android ou Emulador
-
-## 🚀 Instalação
-
-1. **Clone o repositório**
-   ```bash
-   git clone <url-do-repositório>
-   cd Agenda
-   ```
-
-2. **Abra no Android Studio**
-   - Abra o Android Studio
-   - Selecione "Open an Existing Project"
-   - Navegue até a pasta do projeto e selecione
-
-3. **Sincronize o projeto**
-   - O Gradle irá sincronizar automaticamente
-   - Aguarde o download das dependências
-
-4. **Execute o aplicativo**
-   - Conecte um dispositivo Android ou inicie um emulador
-   - Clique em "Run" (▶️) ou pressione `Shift + F10`
 
 ## 📱 Como Usar
 
@@ -164,47 +142,12 @@ Os temas podem ser modificados em `app/src/main/res/values/themes.xml`
 
 ## 🧪 Testes
 
-Para executar os testes:
-
-```bash
-./gradlew test              # Testes unitários
-./gradlew connectedAndroidTest  # Testes instrumentados
-```
-
 ## 📝 Licença
 
 Este projeto foi desenvolvido para fins educacionais.
 
-## 👨‍💻 Desenvolvedor
-
-Desenvolvido como parte de um projeto acadêmico.
-
-## 🔮 Funcionalidades Futuras
-
-- [ ] Modo escuro/claro
-- [ ] Upload de fotos dos contatos
-- [ ] Busca de contatos
-- [ ] Agrupamento por letra inicial
-- [ ] Exportar/Importar contatos (CSV, VCF)
-- [ ] Favoritos
-- [ ] Histórico de chamadas
-- [ ] Compartilhar contato
-
-## 🐛 Problemas Conhecidos
-
-- Nenhum problema conhecido no momento
-
-## 📞 Suporte
-
-Para questões ou sugestões, abra uma issue no repositório.
-
-## 🙏 Agradecimentos
-
-- Material Design por fornecer componentes de UI modernos
-- Comunidade Android por recursos e documentação
-
 ---
 
-**Versão**: 1.0  
-**Última Atualização**: 2024
+**Versão**: 2.0  
+**Última Atualização**: 2025
 
